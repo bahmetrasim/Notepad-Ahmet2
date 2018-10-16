@@ -23,8 +23,8 @@ namespace Dosya_Açma___Okuma
         // situation 1 = save / kaydetmek istediğinize emin misiniz sorusunu getirme
         // 1. Ödev - Kapnmada cancel konusu - OK
         // 2. Ödev Open da gelen yazı hiç değişmediyse sorma - OK
-        // 3. Ödev yeni dosya açtı - yazdı çıktı kaydetme sorma ama yeniden açıldığında text kalsın - OK
-        /*  a. using appname.Properties ekle
+        /* 3. Ödev yeni dosya açtı - yazdı çıktı kaydetme sorma ama yeniden açıldığında text kalsın - OK
+          a. using appname.Properties ekle
             b. solution explorer app Sağ click Properties - Settings - Ekle
             c. Setting.Default ["Adı"] = .....text
             d. Setting.Default.Save()
@@ -63,6 +63,7 @@ namespace Dosya_Açma___Okuma
             OpenFileDialog ChoosingtxtFile = new OpenFileDialog();
             ChoosingtxtFile.Filter = "Text Files | *.txt";
             var result = ChoosingtxtFile.ShowDialog();
+
             if (result == DialogResult.OK)
             {
                 StreamReader sr = new StreamReader(ChoosingtxtFile.FileName);
@@ -92,6 +93,7 @@ namespace Dosya_Açma___Okuma
                 Notepad_yaz.Text = "";
                 filename = "";
             }
+
             if (cancel == "open")
             {
                 openfromfile();
@@ -218,5 +220,6 @@ namespace Dosya_Açma___Okuma
                 }
             }
         }
+
     }
 }
