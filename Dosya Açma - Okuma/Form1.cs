@@ -20,6 +20,8 @@ namespace Dosya_Açma___Okuma
         string path;
         string cancel = "";
         string filetextprev = "";
+        string pano = "";
+        int cursorPosition = 0;
         // situation 1 = save / kaydetmek istediğinize emin misiniz sorusunu getirme
         // 1. Ödev - Kapnmada cancel konusu - OK
         // 2. Ödev Open da gelen yazı hiç değişmediyse sorma - OK
@@ -32,6 +34,7 @@ namespace Dosya_Açma___Okuma
              */
         // 4. Ödev Copy + Paste + cut 
 
+        //Copy eğer select yok ise hata dönme'yi if'siz try ile yapılabilir mi?
         // 1. Soru Aynı dosya ismi ile save ettikten sonra Savaas çalışmıyor
 
         public Form1()
@@ -39,6 +42,7 @@ namespace Dosya_Açma___Okuma
             InitializeComponent();
             wordWrapToolStripMenuItem.Checked = true;
             Notepad_yaz.Text = Settings.Default["LastText"].ToString();
+            Notepad_yaz.DeselectAll();
         }
 
         public void savedialog()
@@ -221,5 +225,34 @@ namespace Dosya_Açma___Okuma
             }
         }
 
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Notepad_yaz.SelectedText != "")
+            {
+                Clipboard.SetText(Notepad_yaz.SelectedText);
+            }
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            pano = Clipboard.GetText();
+            cursorPosition = Notepad_yaz.SelectionStart;
+            Notepad_yaz.Text = Notepad_yaz.Text.Insert(cursorPosition, pano);
+            cursorPosition = cursorPosition + pano.Length;
+            Notepad_yaz.DeselectAll();
+
+        }
+
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (Notepad_yaz.SelectedText != "")
+            {
+                Clipboard.SetText(Notepad_yaz.SelectedText);
+                pano = Clipboard.GetText();
+                cursorPosition = Notepad_yaz.SelectionStart;
+                Notepad_yaz.Text = Notepad_yaz.Text.Remove(cursorPosition, pano.Length);
+                cursorPosition = cursorPosition - pano.Length;
+            }
+        }
     }
 }
