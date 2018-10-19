@@ -35,14 +35,19 @@ namespace Dosya_Açma___Okuma
         // 4. Ödev Copy + Paste + cut 
 
         //Copy eğer select yok ise hata dönme'yi if'siz try ile yapılabilir mi?
-        // 1. Soru Aynı dosya ismi ile save ettikten sonra Savaas çalışmıyor
+
+        // 1- Notepad ismini değiştir -SAve veya Open veya Saveas yapınca
+        // 2- Notepad isminin yanına yıldız koy eğer Open yada save edilen dosyadan farklı bir şey eklendiyse
+        // 3- Form'dan methodları ayır Başka bir class'ta
+
+
 
         public Form1()
         {
             InitializeComponent();
             wordWrapToolStripMenuItem.Checked = true;
             Notepad_yaz.Text = Settings.Default["LastText"].ToString();
-            Notepad_yaz.DeselectAll();
+            Notepad_yaz.SelectionStart = 0;
         }
 
         public void savedialog()
@@ -79,7 +84,8 @@ namespace Dosya_Açma___Okuma
 
         public void asktosave()
         {
-            var result = MessageBox.Show("Do you want to save changes to Untitled?", "Notepad Ahmet", MessageBoxButtons.YesNoCancel);
+            string mesaj = "Do you want to save changes to " + filename + " ?";
+            var result = MessageBox.Show(mesaj, "Notepad Ahmet", MessageBoxButtons.YesNoCancel);
 
             if (result == DialogResult.Cancel)
             {
