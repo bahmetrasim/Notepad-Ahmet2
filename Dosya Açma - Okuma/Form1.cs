@@ -36,10 +36,17 @@ namespace Dosya_Açma___Okuma
 
         //Copy eğer select yok ise hata dönme'yi if'siz try ile yapılabilir mi?
 
-        // 1- Notepad ismini değiştir -SAve veya Open veya Saveas yapınca
+        // 1- Notepad ismini değiştir -Save veya Open veya Saveas yapınca
         // 2- Notepad isminin yanına yıldız koy eğer Open yada save edilen dosyadan farklı bir şey eklendiyse
         // 3- Form'dan methodları ayır Başka bir class'ta
+        // 4- TictacToe Başlangıçta Sorsun formda mı konsol da mı oynayacan
+        // 5- Konsol Uygulamasını yap
+        // 6- 
 
+            // Github Proje Açma
+            //1. Adım github proje clone/download 'tan linki kopyala
+            //2. Adım Team Exploere - Manage Connection - Clone
+            //3. Adım Dosya yolunu Seç
 
 
         public Form1()
